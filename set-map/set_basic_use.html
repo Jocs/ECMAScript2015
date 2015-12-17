@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Set basic use</title>
+</head>
+<body>
+	<h4>Set 的基本用法</h4>
+	<script src='../node_modules/babel-core/browser.js'></script>
+	<!--type='application/javascript; varsion= 1.7' 为了在firefox中使用'...'运算符号-->
+	<script type='text/babel'>
+	'use strict'
+	//example_1
+	var s = new Set();
+	[1,2,3,4,4,5,5,6,6].map(x => s.add(x));
+	for(var i of s){
+		console.log(i);
+	}
+	//example_2
+	var items = new Set([1,2,3,4,4,5,5,6]);
+	console.log('items size: ' + items.size);
+	//两个对象总是不相等的，因此{} !==={}
+	//only under strict mode ,let count can be use in latest chrome
+	let set = new Set();
+	set.add({});
+	console.log('1. set size: ' + set.size);
+	set.add({});
+	console.log('2. set size: ' + set.size);
+	//Set 原型的构造函数，默认为Set constructor function.
+	console.log('Set.prototype.constructor: ' + Set.prototype.constructor);
+	//Set 数据结构主要有四个方法：add, delete, has, clear;
+	var add_set = new Set();
+	add_set.add({name:'luoran'});
+	add_set.add(4);
+	console.log(add_set);
+	var boo = add_set.delete(4);
+	//why is false?
+	console.log(boo);
+	//将set 转化为 array
+	var set1 = new Set([1,3,4,5,6,7,6]);
+	var array1 = Array.from(set1);
+	console.log(array1);
+	/*
+	* Set 结构有四个遍历方法
+	* keys(), value(), entries(), forEach()
+	*/
+	let set2 = new Set(['red','blue','black']);
+	for(let item of set2.keys()){
+		console.log(item);
+	}
+	for(let item of set2.values()){
+		console.log(item);
+	}
+	for(let item of set2.entries()){
+		console.log(item);
+	}
+	//扩展运算符和set结合使用
+	let set3 = new Set(['luoran', 3,5,5]);
+	var array3 = [...set3];
+	console.log(array3);
+	let array4 = [1,3,4,5,6,7,7,7,6];
+	let unique = [...new Set(array4)];
+	console.log('array4 = [1,3,4,5,6,7,7,7,6];');
+	console.log(unique);
+	//数组的map和filter方法也可以用于set。
+	//先把set转化为数组，然后调用arrar的map方法
+	let set4 = new Set([2,3,5]);
+	let set5 = new Set([...set4].map(x => x * x));
+	console.log(set5);
+	let set6 = new Set([...set4].filter(x => x % 2 !== 0));
+	console.log(set6);
+	//set 实现并集合交集
+	let set7 = new Set([1,2,3,4]);
+	let set8 = new Set([3,4,5,6,7]);
+	let union = new Set([...set7,...set8]);
+	let intersect = new Set([...set7].filter(x => set8.has(x)));
+	console.log(union);
+	console.log(intersect);
+	</script>
+
+</body>
+</html>

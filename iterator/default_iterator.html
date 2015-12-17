@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Default iterator</title>
+	<script src='../node_modules/babel-core/browser.js'></script>
+</head>
+<body>
+	<script type='text/babel'>
+		'use strict'
+		var set = new Set([1,2,3,4,5,6,7,7,6,5,3]);
+		var it = set[Symbol.iterator]();
+		for(var key of set.entries()){
+			//console.log(key);
+		}
+		class RangeIterator {
+			constructor(start, end){
+				this.start = start;
+				this.end = end;
+			}
+			[Symbol.iterator](){return this;}
+			next(){
+				var value = this.start;
+				var done = value < this.end ? false: true;
+				this.start ++;
+				return{value: value, done: done};	
+			}
+		}
+		function range(a, b){
+			return new RangeIterator(a, b);
+		}
+		for(var i of range(1,4)){
+			console.log(i);
+		}
+		var set2 = new Set([1,2,3,4,5,6,7,5,4,3]);
+		let [x,y,...rest] = set2;
+		console.log(rest);
+		var str2 = 'hello world!';
+		console.log([...str2]);
+		var arr3 = [1,2,3,'luo','ran'];
+		var arr4 = [4,5,6,7,'ransixi'];
+		//在arr4的第二三个元素之间插入arr3的元素。
+		console.log('----------------------------------');
+		//one way by ECMAScript2015
+		//arr4.splice(1,0,...arr3);
+		//Array.prototype.splice.call(arr4, 1, 0, ...arr3);
+		//one way by ES5
+		var i = arr3.length;
+		while(i){
+			i --;
+			Array.prototype.splice.call(arr4, 1, 0, arr3[i]);
+		}
+		console.log(arr4);
+		var arrEntries = new Set(arr4).entries();
+		var me = arrEntries.toString();
+		console.log(me);
+		var map = new Map();
+		map.set('hello world', 'by luoran');
+		map.set({work: 'scientist'}, 'luoran');
+		for(var [key, value] of map){
+			console.log(key);
+			console.log(value);
+		}
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

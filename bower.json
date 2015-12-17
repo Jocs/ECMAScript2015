@@ -1,0 +1,21 @@
+{
+  "name": "ecmascript",
+  "description": "",
+  "main": "app.js",
+  "authors": [
+    "罗冉 <luoran1988@126.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/Jocs/ECMAScript2015",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "babel": "*"
+  }
+}

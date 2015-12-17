@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Iterator Basic Use</title>
+	<script src='../node_modules/babel-core/browser.js'></script>
+</head>
+<body>
+	<h3>Iterator Basic Use</h3>
+	<p>1.判断一些数据结构上是否具有iterator 接口</p>
+	<p>String 是否有iterator接口: <span id='string'></span></p>
+	<p>Array 是否有iterator接口: <span id='array'></span></p>
+	<p>arguments 是否有iterator接口: <span id='arguments'></span></p>
+	<p>nodelist 是否有iterator接口: <span id='node-list'></span></p>
+	<p>Object 实例是否具有iterator接口: <span id='object'></span></p>
+	<p>Set 是否有iterator接口: <span id='set'></span></p>
+	<p>Map 是否有iterator接口: <span id='map'></span></p>
+	<script type='text/babel'>
+		function $(selector){
+			return document.querySelector(selector);
+		}
+		$('#string').innerHTML = String.prototype[Symbol.iterator] ? true: false;
+		$('#array').innerHTML = Array.prototype[Symbol.iterator] ? true: false;
+		(function(a,b){
+			$('#arguments').innerHTML = arguments[Symbol.iterator] ? true: false;
+		})('hello','world');
+		$('#node-list').innerHTML = document.getElementsByTagName('p')[Symbol.iterator] ? true: false;
+		$('#object').innerHTML = Object.prototype[Symbol.iterator] ? true: false;
+		$('#set').innerHTML = Set.prototype[Symbol.iterator] ? true: false;
+		$('#map').innerHTML = Map.prototype[Symbol.iterator] ? true: false;
+		var set = new Set([2,2,3,3,4,4,5,5]);
+		for(let i of set.entries()){
+			console.log(i);
+		}
+ 	</script>
+</body>
+</html>
+
+
+
+
+
+
+

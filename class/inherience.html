@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>继承</title>
+	<script src='../node_modules/babel-core/browser.js'></script>
+</head>
+<body>
+	<script type='text/babel'>
+		class A{
+			constructor(name, age){
+				this.name = name;
+				this.age = age;
+			}
+		}
+		class B {
+			sayName(){
+				console.log('My name is ' + this.name + ', and I am ' + this.age + ' years old!');
+			}
+		}
+		let a = new A('luoran', 19), b = new B();
+		Object.setPrototypeOf(a, b);
+		a.sayName();
+		console.log('原生构造函数的继承：');
+		class MyArray extends Array{
+			constructor(...args){
+				super(...args);
+			}
+		}
+		var arr = new MyArray();
+		arr[1] = 2;
+		console.log(arr[1]);
+		console.log('class 的getter setter属性');
+		class An {
+			constructor(name, age){
+				this.name = name;
+				this.age = age;
+			}
+			get getName (){
+				console.log(this.name);
+			}
+			set setName(name){
+				this.name = name;
+			}
+		}
+
+		var an = new An('hello', 45);
+		Object.defineProperty(an, 'work', {configurable: true, 
+			                                writable: true, 
+			                                enumerable: true, 
+			                                value:'scientist' } );
+		
+		console.log(an.name);
+		an.getName;
+		an.setName = 'ransixi';
+		console.log(an.name);
+		an.getName;
+		var description = Object.getOwnPropertyDescriptor(an, 'work');
+		console.log(description);
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

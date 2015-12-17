@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		'use strict'
+		class Foo {
+			//方法前面加static，后面的方法就是静态方法
+			static classMethod() {
+				console.warn('You are use a static method!');
+			}
+		}
+		Foo.classMethod();
+		var foo = new Foo();
+		//会报错：Uncaught TypeError: foo.classMethod is not a function
+		//foo.classMethod();
+		//父类的静态方法可以被子类继承
+		class Bar extends Foo {
+			static otherMethod () {
+				 super.classMethod();
+				 console.log('toto');
+			}
+		}
+		Bar.otherMethod();
+	</script>
+</body>
+</html>

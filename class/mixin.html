@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Mixin模式</title>
+	<script src='../node_modules/babel-core/browser.js'></script>
+</head>
+<body>
+	<script type='text/babel'>
+		/*此段代码还不能够运行*/
+		function mixin(...mixins){
+			class Mix {};
+			for(let mixin of mixins){
+				copyProperties(Mix, mixin);
+				copyProperties(Mix.prototype, mixin.prototype);
+			}
+			function copyProperties(target, source){
+				for(let key in source){
+					if  (  key !== 'constructor'
+						&& key !== 'prototype'
+						){
+						var des = Object.getOwnPropertyDescriptor(source, key);
+						Object.defineProperty(target, key, des);
+					}
+				}
+			}
+		}
+
+		class A {
+			constructor(name){
+				this.name = name;
+			}
+			sayName(){
+				console.log(this.name);
+			}
+		}
+		class B {
+			constructor(age){
+				this.age = age;
+			}
+			showAge(){
+				console.log(this.age);
+			}
+		}
+		var a = new A('ransixi'), b = new B(27);
+		var c = mixin(a, b);
+		console.log(c);
+
+	</script>
+</body>
+</html>
+
+
+
+
+

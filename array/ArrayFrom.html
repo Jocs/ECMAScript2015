@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Array From 的使用</title>
+</head>
+<body>
+	<p>Array.from()方法用来把一个类数组转化为真正数组</p>
+	<p>Array.from()还能够把包含length属性的对象转换成数组</p>
+	<p>Array.from()接受第二个参数，类似于数组的map方法</p>
+	<script>
+		var obj = {
+			length: 5,
+			0: 1,
+			1: 1,
+			2: 2,
+			3: 4,
+			4: 5
+		};
+		var obj2 = {
+			double: function ( n ) {
+				return 2 * n;
+			}
+		};
+		function getArray() {
+			return Array.from(arguments);
+		};
+		console.log(getArray(1,2,3,4,5))
+		console.log(Array.from(obj));
+		console.log(Array.from(obj, function(i){
+			return i * i;
+		}));
+		console.log(Array.from(obj, function(i){
+			return this.double(i);
+		}, obj2));
+	</script>
+</body>
+</html>

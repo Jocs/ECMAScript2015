@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Array.of()方法的使用</title>
+</head>
+<body>
+	<p>Array.of主要用于把一组数转化为数组，其有效的规避了Array构造函数的弊端，在Array构造函数中，如果只是传入一个参数，并且为数字，其将被设置为length属性值</p>
+	<p>Array.prototype上面的方法：</p>
+	<p>Array.prototype.copeWithin():copeWithin方法可以将数组中制定位置的成员复制到数组中的其他位置。
+	其接受三个参数，第一个参数是目的地位置，也就是需要复制到哪儿，第二三个参数是从哪儿复制，也就是复制源的起始位置</p>
+	<p>Array.prototype.find()和Array.prototype.findIndex()方法</p>
+	<p>数组实例的fill方法，用于填充数组元素</p>
+	<script>
+		'use strict'
+		console.log(new Array('hello'));
+		console.log(new Array(1));
+		console.log(new Array(2));
+		console.log(new Array(2,3));
+		console.log(Array.of(1));
+		var arr = [1,2,3,4,5,6];
+		arr.copyWithin(0,3,6);
+		console.log(arr);
+		console.log(arr.find(x => x > 3));
+		console.log(arr);
+		console.log(arr.findIndex( x => x > 5));
+		arr.fill(0, 2, 5);
+		console.log(arr);
+		var arr2 = ['ransixi', 'wujingwen', 'xiaoming'];
+		for(let key of arr2.keys()) {
+			console.log(key);
+		}
+		for(let value of arr2.values()) {
+			console.log(value);
+		}
+	</script>
+</body>
+</html>

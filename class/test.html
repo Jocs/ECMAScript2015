@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>test 私有方法</title>
+	<script src='../node_modules/babel-core/browser.js'></script>
+</head>
+<body>
+	<script type='text/babel'>
+		class Person {
+			constructor(name, age, work){
+				this.name = name;
+				this.age = age;
+				this.work = work;
+				this.sayName = function(){
+					console.log(this.name);
+				}
+			}
+			
+			sayAge(){
+				console.log(this.age);
+			}
+		}
+		var person1 = new Person('ransixi', 29, 'scientist');
+		person1.sayName();
+		person1.sayAge();
+		console.log(person1.hasOwnProperty('name'));
+		console.log(person1.hasOwnProperty('sayName'));
+		console.log(person1.hasOwnProperty('sayAge'));
+		for(var key in person1){
+			console.log(key);
+		}
+	</script>
+</body>
+</html>

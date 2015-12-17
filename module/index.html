@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	
+</head>
+<body>
+	<h3>hello world ECMAScript2015 Module</h3>
+	<button >Click Me</button>
+	<p id='content'></p>
+	<p id='hello'></p>
+	<script src='traceur.js'></script>
+	<script src='es6-module-loader-dev.js'></script>
+	<script type="module">
+	    import { hello } from 'test2.js';
+	    console.log(hello); // -> world
+
+	    // es6 syntax
+	    var a, b;
+	    [a, b] = [1, 2];
+	    console.log(a); // -> 1
+	  </script>
+	<script >
+		System.import('test1.js').then(function(module){
+			var person = new module.Person('ransixi', 27);
+			person.showName();
+		});
+	</script>
+
+</body>
+</html>

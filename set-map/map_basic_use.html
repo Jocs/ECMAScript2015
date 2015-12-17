@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src='../node_modules/babel-core/browser.js'></script>
+</head>
+<body>
+	<p>Map结构实例有一下属性和方法：</p>
+	<p>size,set(),get(),has(key),delete(key),clear()</p>
+	<h4>map的遍历方法：</h4>
+	<p>keys(), values(), entries()</p>
+	<script type='text/babel'>
+		var m = new Map();
+		var o = {
+			age: 27
+		};
+		m.set(o, 'age object');
+		console.log(m.get(o));
+		console.log(m.has(o));
+		m.delete(o);
+		console.log(m.has(o));
+		//Map()构造函数也可以接受一个数组作为参数
+		var m1 = new Map([['name','luoran'],['age',27]]);
+		console.log(m1.has('name'));
+		//只有对同一个对象的引用，才视为同一个键
+		var m2 = new Map();
+		m2.set([3], 3);
+		console.log(m2.get([3])) //undefined
+		var m3 = new Map();
+		m3.set('hello', 'world');
+		m3.clear();
+		console.log(m3);
+		//may 遍历
+		var m4 = new Map([
+				[{'name': 'luoran'},'profile'],
+				[{'work': 'scientist'},'work infomation']
+			]);
+		for(var key of m4.keys()){
+			console.log(key);
+		}
+		for(var key of m4.entries()){
+			console.log(key);
+		}
+		//Map()的原型上也有forEach()方法。
+		/*
+		* map.forEach(function(value, key, map){}, thisObject);
+		* parans: thisObject可以用来绑定function(value, key, map){}的上下文，也就是函数中的this对象
+		*/
+		var m5 = new Map([
+				['name','ransixi'],
+				['age',27]
+			]);
+		var report = {
+			report: function(value, key){
+				console.log('Key: %s, Value: %s', key, value);
+			}
+		};
+		m5.forEach(function(value, key, map){
+			this.report(value,key);
+		},report);
+
+
+
+
+	</script>
+</body>
+</html>

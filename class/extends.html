@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<script type='text/javascript'>
+		'use strict'
+		class MyArray extends Array {
+			constructor(...args){
+				super(...args);
+			}
+		}
+
+		var arr = new MyArray();
+		arr[0] = 12;
+		console.log(arr.length);
+		arr.length = 0;
+		console.log(arr[0]);
+	</script>
+</body>
+</html>

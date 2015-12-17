@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src='../bower_components/babel/browser.js'></script>
+</head>
+<body>
+	<script type='text/babel'>
+		'use strict'
+		class VersionArray extends Array {
+			constructor (...args) {
+				super(...args);
+				this.history = [[]];
+			}
+
+			commit () {
+				this.history.push(this.slice());
+			}
+
+			revert () {
+				this.splice(0, this.length, ...this.history[this.history.length - 1]);
+			}
+		}
+
+		let x = new VersionArray();
+		x.push(1);
+		x.push(2);
+		console.info(x);
+		console.info(x.history);
+
+		x.commit();
+		console.info(x.history);
+		x.push(3);
+		console.info(x);
+		x.revert();
+		console.table(x);
+	</script>
+</body>
+</html>

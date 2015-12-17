@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src='../node_modules/babel-core/browser.js'></script>
+	<style>
+		p{
+			position: relative;
+			width:200px;
+			height: 50px;
+			background: #ccc;
+			border-radius: 3px;
+		}
+	</style>
+</head>
+<body>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+</body>
+<script type='text/babel'>
+	'use strict'
+	window.onload = function(){
+		var ps = document.querySelectorAll('p');
+		var index = 0;
+		for(var p of ps){
+			index = index + 100;
+			p.style.left = index + 'px';
+		}
+	};
+</script>
+</html>
+
+
+
+
+
+
+

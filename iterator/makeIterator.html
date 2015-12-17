@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>make iterator</title>
+	<script src='../node_modules/babel-core/browser.js'></script>
+</head>
+<body>
+	<button id='button'>Click Me</button>
+	<script type='text/babel'>
+		function makeIterator(array){
+			var index = 0;
+			return {
+				next: function(){
+					return index < array.length ?
+					{value: array[index ++], done: false} :
+					{value: undefined, done: true};
+				}
+			}
+		}
+		var it = makeIterator([2,4,5,6,7,9,0]);
+		function getNext(){
+			var p = document.createElement('p');
+			var temp = it.next();
+			p.innerHTML = temp.value;
+			!temp.done ? document.getElementsByTagName('body')[0].appendChild(p):alert('fineshed');
+		}
+		document.getElementById('button').addEventListener('click', getNext, false);
+
+	</script>
+</body>
+</html>

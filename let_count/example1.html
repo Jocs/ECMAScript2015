@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Let Count</title>
+	<script src='../bower_components/babel/browser.js'></script>
+</head>
+<body>
+	<script type='text/babel'>
+		'use strict'
+		{
+			var a = 0;
+			let b = 1;
+		}
+		//let 申明的变量只在其申明的代码块中有用，在代码块外无法访问到
+		console.log(a);
+		//console.log(b); 反模式，example1.html:16 Uncaught ReferenceError: b is not defined
+		for(let i = 0; i < 5; i ++){
+			console.log(i);
+		}
+		//console.log(i); 反模式，Uncaught ReferenceError: b is not defined
+		var c = [];
+		for(let i = 0; i < 10; i ++){
+			c[i] = function(){
+				console.log(i);
+			}
+		}
+		c[6]();
+		console.log(d); // undefined 因为let不存在变量提升
+		let d = 'ddd';
+	</script>
+</body>
+</html>

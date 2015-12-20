@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	
+</head>
+<body>
+	<script>
+	'use strict'
+		function* objectEntries( obj ) {
+			let propKeys = Reflect.ownKeys(obj);
+			for(let propkey of propkeys){
+				yield [propkey, obj[propkey]];
+			}
+		}
+
+		let jane = {
+			first: 'Jane',
+			last: 'Doe'
+		};
+
+		for(let[key, value] of objectEntries(jane)){
+			console.log('${key}: ${value}');
+		}
+	</script>
+</body>
+</html>

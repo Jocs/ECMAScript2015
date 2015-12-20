@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src='../bower_components/babel/browser.js'></script>
+</head>
+<body>
+	<script >
+	 	const PI = 3.1415926;
+	 	console.log(PI);
+	 	//PI = 1; PIis read-only
+	 	//const WIDTH; CONST 一旦声明就需要立即初始化
+	 	if(true){
+	 		console.log(MAX);
+	 		const MAX = '345';
+	 	}
+	 	const obj = {};
+	 	obj.x = 123;
+	 	console.log(obj.x);
+	 	//obj = {x: 4}; 反模式，const只是保证了变量的引用不会改变，但是并不能保证引用的数据也是不可变的，也就是
+	 	//说，引用的数据可以改变，如上。
+	 	var constantize = (obj) => {
+		  Object.freeze(obj);
+		  Object.keys(obj).forEach( (key, value) => {
+		    if ( typeof obj[key] === 'object' ) {
+		      constantize( obj[key] );
+		    }
+		  });
+		};
+	 	var a = {
+	 		x : 1,
+	 		y : {z: 2, c: 4}
+	 	};
+	 	constantize(a);
+	 	a['y'].z = 4;
+	 	console.log(a['y']['z']);
+	</script>
+</body>
+</html>

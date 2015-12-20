@@ -28,6 +28,35 @@
 		c[6]();
 		console.log(d); // undefined 因为let不存在变量提升
 		let d = 'ddd';
+		function bar(x = 2, y = x){
+			return[x, y];
+		}
+		console.info(bar());
+		// if(true){ // 不予许重复申明变量
+		// 	let f = 'f';
+		// 	let f = 'd';
+		// }
+		var tem = new Date();
+		(function f(){
+			console.log(tem);
+			if(false){
+				var tem = '123';
+			}
+		})();
+		if(true){
+			let sec = 'secret';
+			function f(){
+				console.log(sec);
+			}
+		}
+		//f(); 无法访问到块状作用域内部的函数
 	</script>
 </body>
 </html>
+
+
+
+
+
+
+

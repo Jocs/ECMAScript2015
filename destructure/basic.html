@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src='../bower_components/babel/browser.js'></script>
+</head>
+<body>
+	<script>
+	'use strict'
+		let [x, y] = [1, 2];
+		console.log(y);
+		//解构赋值不成功返回undefined。
+		let [foo] = [];
+		console.log(foo);
+		//扩展符...解构。等号右边必须是数组，或其他可遍历对象
+		let [m, ...z] = [1, 2, 3, 4];
+		console.log(z);
+		//等号右边也可以是Set数据结构
+		let [a, b] = new Set([3, 4]);
+		console.log(b);
+		function* fibs() {
+			var a = 0;
+			var b = 1;
+			while( true ){
+				yield a;
+				[a, b] = [b, a + b];
+			}
+		}
+		var [first, second, third, fourth] = fibs();
+		console.log(fourth);
+		//结构赋值允许指定默认值
+		var [bar = true] = [];
+		console.info(bar);
+		let [n = 1, l = n] = [2];    // n=2; l=2
+		console.log(n, l)
+	</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

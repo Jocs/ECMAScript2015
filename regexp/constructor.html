@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>RegExp</title>
+	<script src='../bower_components/babel/browser.js'></script>
+</head>
+<body>
+	<script type='text/babel'>
+		'use strict'
+		var regexp = new RegExp(/xyz/ig);
+		console.log(regexp);
+		let s = '𠮷';
+		console.log(/^.$/.test(s));
+		console.log(/^.$/u.test(s));
+		console.log(/ab/g.source);
+		//粘连修饰符,现在还不支持
+		// let str = 'aaa_aa_a';
+		// var exp = /a+_/y;
+		// console.log(exp.exec(str));
+		// console.log(exp.exec(str));
+	</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Method</title>
+	<script src='../bower_components/babel/browser.js'></script>
+</head>
+<body>
+	<script type='text/babel'>
+		'use strict'
+		let s = 'hello world';
+		console.log(s.includes('h'));
+		console.log(s.startsWith('h'));
+		console.log(s.endsWith('d'));
+		//以上三个方法支持第二个参数，其中endsWith中的第二个参数表示计算第二个参数之前的字符，
+		//其他两个方法表示其之后的字符。
+		console.log(s.includes('w', 6));
+		console.log(s.startsWith('w', 6));
+		console.log(s.endsWith('hello', 5));
+		//repeat方法，就是把字符串重复多次，并返回
+		let s2 = s.repeat(2);
+		console.log(s2);
+		//字符串补全 padStart and padEnd 目前babel还不支持
+		// console.log('x'.padStart(5, 'ab'));
+		// console.log('x'.padEnd(6, 'er'));
+		// 模板字符串
+		var name = 'ransixi', age = 27;
+		function f(){
+			return 'haha';
+		}
+		var str = `my name is ${name}, and my age is ${age} and ${f()}`;
+		console.log(str);
+	</script>
+</body>
+</html>

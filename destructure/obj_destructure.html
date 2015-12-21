@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Destructure</title>
+	<script src='../bower_components/babel/browser.js'></script>
+</head>
+<body>
+	<script type='text/babel'>
+		var {foo, bar} = {
+			foo: 'aaa',
+			bar: 'bbb'
+		};
+		console.log(foo);
+		let obj = {
+			first: 'hello',
+			last: 'world'
+		};
+		let {
+			first: f,
+			last: l
+		} = obj;
+		console.log(f);
+		//默认值生效的条件就是对象的属性值严格等于undefined
+		var {x = 3} = {x: undefined};
+		console.log(x);
+		var bar;
+		({bar} = {bar: 'hello bar'});
+		console.log(bar);
+	</script>
+</body>
+</html>

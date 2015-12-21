@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src='../bower_components/babel/browser.js'></script>
+</head>
+<body>
+	<script type='text/babel'>
+		'use strict'
+		let [x, y, z] = 'yes';
+		console.log(y);
+		//结构赋值，如果等号右边是数字，布尔值，先将其转化为实例对象，再赋值。
+		var {toString: s} = 123;
+		console.log(s === Number.prototype.toString);
+		var arr = [[1, 2], [3, 4]].map(([x, y]) => x + y);
+		console.log(arr);
+		function move({x = 1, y = 1} = {}) {
+			return [x, y];
+		}
+		console.log(move({x: 2, y: 2}));
+		console.log(move());
+		console.log(move({}));
+		function move2({x, y} = {x: 1, y: 1}) {
+			return [x, y];
+		}
+		console.log(move({}));
+		var array = [1, undefined, 3].map((item = 'yes') => item);
+		console.log(array);
+		//用途，交换变量的值
+		var left = 1, right = 2;
+		[left, right] = [right, left];
+		console.log(left);
+		//函数返回一个对象或数组的时候，用解构赋值就很方便。
+		function example(){
+			return [1, 2, 3];
+		}
+		var [aaa, bbb, ddd] = example();
+		console.log(ddd);
+		//解构赋值可以很容易的把函数参数与变量名对应起来
+		function ff([i, ii, iii]) {
+			return i + ii + iii;
+		}
+		console.log(ff[1, 2, 3]);
+		//遍历Map解构
+		var map = new Map();
+		map.set('first', 'hello');
+		map.set('second', 'world');
+
+		for(let [key, value] of map) {
+			console.log(key + ' is ' + value );
+		}
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

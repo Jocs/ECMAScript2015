@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>二进制 八进制</title>
+</head>
+<body>
+	<script>
+		//通过toString方法，可以将10进制转化为其它进制的表示。
+		//eg: （502).toString(2);
+		// // "111110110"
+		// 二进制和八进制新的表示方法，二进制前面加Ob,八进制前面加0o.
+		console.log(0b111110110 === 502);
+		//将0b,0o前缀的字符串转为十进制，需要使用到Number方法。
+		console.log(Number(0b111110110));
+		console.log(Number.isFinite(4));
+		console.log(Number.isNaN(NaN));
+		//ES6将parseInt和parseFloat移植到了Number上面了。通过
+		//Number.parseInt(), 和 Number.parseFloat()调用
+		console.log(Number.parseInt(2.845));
+		//Number.isInteger()用来判断一个数是否为整数
+		console.log(Number.isInteger(23.4));
+		//Number.isSafeInteger()用来判断一个数是否在准确表示整数范围之内。
+		console.log(Number.isSafeInteger(5));
+		//ES6对Math对象上面新增了17个方法。
+		//1. Math.trunc().用来去除数字的小数部分。
+		console.log(Math.trunc(3.4));
+		console.log(Math.sign(-5));
+		console.log(Math.cbrt(2));
+		console.log(Number.isInteger(23.0));
+	</script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Interator</title>
+	<script src='../bower_components/babel/browser.js'></script>
+</head>
+<body>
+	<script type='text/babel'>
+		'use strict'
+		for(let ch of 'hello nice'){
+			console.log(ch);
+		}
+		//console.log('𠮷'.at(0)); babel还不支持
+		console.log('\u01D1'.normalize() === '\u004F\u030C'.normalize());
+	</script>
+</body>
+</html>

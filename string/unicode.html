@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Unicode</title>
+</head>
+<body>
+	<script>
+		'use strict'
+		var a = '\u0061';
+		console.log(a);
+		var b = '\u{20BB7}';
+		console.log(b);
+		var c = '罗';
+		console.log(c.length);
+		var d = '𠮷';
+		console.log(d.length);
+		console.log(d.codePointAt(0));
+
+		function is32Bit(c) {
+			return c.codePointAt(0) > 0xFFFF;
+		}
+		console.log(is32Bit('𠮷'));
+		console.log(is32Bit('a'));
+		let s = '𠮷a';
+		console.log(s.codePointAt(0).toString(16));
+		//依然存在问题，只能够通过codePointAt（2）找到「a」;
+		console.log(s.codePointAt(2).toString(16));
+		//可以通过for of来遍历字符串。
+		for(let ch of s){
+			console.log(ch.codePointAt(0).toString(16));
+		}
+		//String.fromCodePoint()
+		let e = String.fromCodePoint(0x20BB7);
+		console.log(e);
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

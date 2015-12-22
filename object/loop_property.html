@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src='../bower_components/babel/browser.js'></script>
+</head>
+<body>
+	<script type='text/babel'>
+		'use strict'
+		class Person {
+			constructor (name, age){
+				Object.assign(this, {name, age});
+			}
+			sayName () {
+				console.log(this.name);
+			}
+		}
+		class Man extends Person {
+			constructor (name, age, work) {
+				super(name, age);
+				Object.assign(this, {work});
+			}
+			sayWork () {
+				console.log('My Work is ' + this.work);
+			}
+		}
+		let ransixi = new Man('ransixi', 27, 'FE');
+		ransixi.sayName();
+		ransixi.sayWork();
+		console.log(Object.getPrototypeOf(ransixi));
+		for(let key in ransixi){
+			console.log(key);
+		}
+		console.log(Object.keys(ransixi));
+		//Object.getPrototypeOf()和Object.setPrototypeOf();
+		class Rectangle {
+			constructor(width, height) {
+				Object.assign(this, {width, height});
+			}
+			getSquiry () {
+				return this.width * this.height;
+			}
+		}
+		var rect = new Rectangle(4, 3);
+		console.log(rect.__proto__ === Rectangle.prototype);
+		console.log(Object.getPrototypeOf(rect) === Rectangle.prototype);
+		Object.setPrototypeOf(rect, Object.prototype);
+		console.log(Object.getPrototypeOf(rect) === Rectangle.prototype);
+		// ...扩展运算符在对象中的应用
+		let {a, b, ...c} = {a: 1, b: 2, c: 3, d: 4};
+		console.log(c);
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

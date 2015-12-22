@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>object</title>
+</head>
+<body>
+	<script>
+		'use strict'
+		let foo = 'bar';
+		let baz = {foo};
+		console.log(baz.foo);
+		//在使用箭头函数的时候，如果返回一个对象，一定要记得加小括号。
+		let f = (x, y) => ({x, y});
+		let obj = f(1, 2);
+		console.log(obj);
+		let birth = 27;
+		let person = {
+			name : 'ransixi',
+			birth, 
+			hello() {
+				console.log(this.birth);
+			}
+		};
+		person.hello();
+		let chart = {
+			_wheels: 4,
+			get wheels () {
+				return this._wheels;
+			},
+			set wheels (value) {
+				if(value < this._wheels){
+					throw new Error('数值太小');
+				}
+				this._wheels = value;
+			}
+		};
+		chart.wheels = 5;
+		console.log(chart.wheels);
+	</script>
+</body>
+</html>

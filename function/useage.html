@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src='../bower_components/babel/browser.js'></script>
+</head>
+<body>
+	<script type='text/babel'>
+		'use strict'
+		let throwErrorIfMissing = () => 'Missing Parameter';
+
+		let foo = (mustBeProvided = throwErrorIfMissing()) =>  console.log(mustBeProvided);
+
+		foo();
+		foo('name')
+		let add = (...values) => {
+			let sum = 0;
+			for(let val of values){
+				sum += val;
+			}
+			return sum;
+		};
+		let result = add(1, 2, 3, 4);
+		console.log(result);
+		function push(array, ...items){
+			items.forEach(( item ) => array.push( item ));
+		}
+		let a = [];
+		push(a, 1, 2, 3);
+		console.log(a);
+
+		
+	</script>
+</body>
+</html>

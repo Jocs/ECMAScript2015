@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		let handler = {
+			has (target, key){
+				if(key[0] === '_') return false;
+				return key in target;
+			}
+		};
+		//下面FF还不支持
+		var target = {_prop: 'foo', prop: 'baz'};
+		var proxy = new Proxy(target, handler);
+		console.log(Reflect.has(target, '_prop'));
+		var h = {
+			setPrototypeOf (target, proto){
+				throw new Error('Change the prototype is forbidden');
+			}
+		};
+		var proto = {};
+		var target = function(){};
+		var proxy = new Proxy(target, h);
+		Reflect.setPrototypeOf(proxy, proto);
+		console.log(Object.getPrototypeOf(proxy) === proto);
+	</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src='../bower_components/babel/browser.js'></script>
+</head>
+<body>
+	<script type='text/babel'>
+		'use strict'
+		console.log(...[1, 2, 3]);
+		//替代apply方法
+		let add = (x, y, z) => x + y + z;
+		let arr = [1 ,2 ,3];
+		let result = add(...arr);
+		console.log(result);
+		//合并数组
+		let arr1 = [1,2], arr2 = [3, 4];
+		let arr3 = [...arr1, ...arr2];
+		console.log(arr3);
+		const [x, ...y] = [1,2,3,4,5];
+		console.log(y);
+	</script>
+</body>
+</html>

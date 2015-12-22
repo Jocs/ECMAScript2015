@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>default arguments</title>
+	<script src='../bower_components/babel/browser.js'></script>
+</head>
+<body>
+	<script type='text/babel'>
+		'use strict'
+		//默认参数
+		let sayHello = (name = 'xiaoming') => 'hello ' + name;
+		console.log(sayHello());
+		console.log(sayHello('ransixi'))
+		//与解构赋值联合使用
+		function foo({x, y = 5}) {
+			console.log(x, y);
+		}
+		foo({});
+		foo({x: 1});
+		foo({x: 1, y: 3});
+		//foo();
+		console.log(sayHello.length);
+		let x = 'hello';
+		((x, y = x) => console.log(y))('world');
+
+		let baz = 'outer';
+		function kaka(func = y => baz){
+			let baz = 'inner';
+			console.log(func());
+		}
+		kaka();
+	</script>
+</body>
+</html>
+
+
+
+
+
+

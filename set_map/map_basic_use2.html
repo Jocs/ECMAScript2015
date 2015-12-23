@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Map</title>
+</head>
+<body>
+	<div id='hello'></div>
+	<script>
+		'use strict'
+		//1. 第一种书写map的语法
+		let m1 = new Map([['a', 1],['b', 2]]);
+		console.log(m1.get('a') + m1.get('b'));
+		//2. 第二种书写map的语法
+		let m2 = new Map();
+		m2.set('a', 1);
+		m2.set('b', 2);
+		console.log('the total is %s', m2.get('a') + m2.get('b'));
+		//map上面的属性的方法
+		//map.set(key, value)
+		//map.get(key)
+		//map.size
+		//map.has()
+		//map.clear()
+		let m3 = new Map();
+		m3.set('a', 'ransixi');
+		m3.set('b', 'wujingwen');
+		console.log(m3.size, m3.has('a'));
+		m3.clear();
+		console.log(m3.size);
+		/**
+		 * Map数据结构和Object都是表示键值对的集合，区别在于Object的键只能够是字符串，而Map的键还可以
+		 * 是其他数据结构，比如说对象
+		 */
+		let m4 = new Map();
+		let o = document.querySelector('#hello');
+		m4.set(o, 'a DOM element');
+		console.log(m4.get(o));
+		m4.set('a', 'simple a a');
+		console.log([...m4.keys()], [...m4.values()], [...m4.entries()]);
+		m4.forEach((value, key) => console.log(`the key is: ${key}, and the value is ${value}!`));
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

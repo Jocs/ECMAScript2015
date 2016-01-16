@@ -1,13 +1,15 @@
 
-function timeout(ms) {
-  return new Promise((resolve, reject) => {
-    setTimeout(resolve, ms);
-  });
+const getPromise = (time, message) => {
+	return new Promise((resolve, reject) => {
+		setTimeout(() => resolve(message), time)
+	})
 }
 
-async function asyncPrint(value, ms) {
-  await timeout(ms);
-  console.log(value);
+const start = async function() {
+	console.info('start')
+	let text = await getPromise(3000, 'hello world')
+	return text
 }
 
-asyncPrint('hello world', 50);
+const message = start()
+console.log(message)
